@@ -1,3 +1,4 @@
+# HTTP
 
 ## [HTTP 协议](http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html)
 HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。
@@ -131,3 +132,17 @@ The server (that the POST request is sent to) needs to include the Access-Contro
  在使用Ajax跨域请求时，如果设置Header的ContentType为application/json,会分两次发送请求。第一次先发送Method为OPTIONS的请求到服务器，这个请求会询问服务器支持哪些请求方法（GET,POST等），支持哪些请求头等等服务器的支持情况。等到这个请求返回后，如果原来我们准备发送的请求符合服务器的规则，那么才会继续发送第二个请求，否则会在Console中报错。
 
  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+ 
+ 
+ ## URL中特殊字符(+?%#&=/)的处理
+* `“+”` url中+号的表示空格 转化 %2B
+* `“/”` 用来分割目录和子目录 转化 %2F
+* `“?”` 用来分割请求的url和参数 转化 %3F
+* `“%”` 用来指定特殊字符 转化 %25
+* `“#”` 用来表示书签 转化 %23
+* `“&”` 用来表示url中指定的参数间的分割符 转化%26
+* `“=”` 用来表示url中指定的参数的值 转化 %3D
+* `“”` url中的空格可以用+号或编码 转化%20
+
+ 
+ 
