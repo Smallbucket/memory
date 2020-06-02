@@ -54,6 +54,9 @@ A JavaScript library for building user interfaces.
 
 ### [HTTP 协议](https://github.com/TourDJ/memory/blob/master/http%20%E5%8D%8F%E8%AE%AE.md)  
 
+### 其他
+https://www.58bits.com/blog/2020/02/28/how-create-truly-portable-ubuntu-installation-external-usb-hdd-or-ssd
+https://www.zachpfeffer.com/single-post/Install-Ubuntu-on-an-External-Hard-Drive
 
 ***
 
