@@ -136,11 +136,12 @@ The upstream directive specifies that these two instances work in tandem as an u
 
 
 #### 静态文件拦截器
-  location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
-    root /usr/local/silly_face_society/node/public;
-    access_log off;
-    expires max;
-  }
+
+        location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
+          root /usr/local/silly_face_society/node/public;
+          access_log off;
+          expires max;
+        }
 
 
 
@@ -227,8 +228,9 @@ The upstream directive specifies that these two instances work in tandem as an u
 nginx和selinux冲突解决:
 
 取出selinux中有关于nginx被拒绝的信息，然后通过一些手段将这些文件设置成通过
-cat /var/log/audit/audit.log |grep nginx |grep denied| audit2allow -M mynginx
-semodule -i mynginx.pp
+
+      cat /var/log/audit/audit.log |grep nginx |grep denied| audit2allow -M mynginx
+      semodule -i mynginx.pp
 
  
 查看 selinux 状态：
@@ -243,11 +245,14 @@ setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
 
 ## nginx 安装
 1：下载安装包
+
 2：解压 tar -zxvf nginx-1.5.9.tar.gz 
+
 3. 安装依赖包
 
       aptitude install libpcre3 libpcre3-dev libpcrecpp0 libssl-dev zlib1g-dev
-3：设置一下配置信息
+
+4：设置一下配置信息
 
       ./configure \
       --prefix=/usr/local/nginx \
@@ -261,8 +266,8 @@ setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
       --http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
       --http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
       --http-scgi-temp-path=/var/temp/nginx/scgi
-4：make 编译      
-5：make install 安装     
+5：make 编译      
+6：make install 安装     
 
 > ubuntu 依赖库zlib，pcre，openssl安装方法
 
@@ -270,6 +275,12 @@ setenforce [ Enforcing | Permissive | 1 | 0 ]   // 1 开启， 0 关闭
       解决依赖包pcre安装，命令：sudo apt-get install libpcre3 libpcre3-dev
       解决依赖包zlib安装，命令：sudo apt-get install zlib1g-dev
 
+> Nginx如果未开启SSL模块，配置Https时提示错误
+
+      nginx: [emerg] the "ssl" parameter requires ngx_http_ssl_module in /usr/local/nginx/conf/nginx.conf:37
+> Nginx开启SSL模块
+
+      ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module
 
 ## 配置服务
 创建脚本 
